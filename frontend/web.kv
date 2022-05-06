@@ -1,0 +1,91 @@
+<Container>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    rows: 3
+    grid: grid
+    input: text_input
+    AsyncImage:
+        source: 'https://umnyasha.me/upload/blog1/heppy-english-01.jpg'
+
+    AnchorLayout:
+        TextInput:
+            id: text_input
+            size_hint: 0.75, 0.2
+            multiline:False
+        BoxLayout:
+            Button:
+                background_color: 0.4, 0.5, 0.6, 1
+                font_size: 20
+                size: 75, 39
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                size_hint: None, None
+                text: 'Search'
+                on_release:
+                    root.go_study()
+
+        BoxLayout:
+            Button:
+                text: 'Problems'
+                pos_hint: {'center_x': 0.1, 'center_y': 0.1}
+                size_hint: 0.1, 0.1
+
+                on_release:
+                    root.go_task()
+
+    ScrollView:
+        background_color: 0.4, 0.5, 0.6, 1
+        do_scroll_x: False
+        do_scroll_y: True
+        GridLayout:
+            id: grid
+            cols: 1
+            spacing: 10
+            size_hint_y: None
+            BoxLayout:
+                Label:
+                    id: label
+
+<Task>:
+    rows: 3
+    cols: 2
+    task_grid: task_grid
+    label_answer_task: label_answer_task
+    text_answer: text_answer
+
+    GridLayout:
+        id: task_grid
+        cols: 1
+        spacing: 20
+        padding: 50
+
+        TextInput:
+            id: text_answer
+            size_hint: 1, 0.9
+            multiline:False
+
+        BoxLayout:
+            orientation:'vertical'
+            Label:
+                id: task_label
+
+            Button:
+                text: 'Home'
+                pos_hint: {'center_x': 0.1, 'center_y': 0.1}
+                size_hint: 0.1, 0.1
+
+                on_release:
+                    root.go_main()
+
+            Button:
+                text: 'Check!'
+                pos_hint: {'center_x': 0.7, 'center_y': 0.1}
+                size_hint: 0.2, 0.2
+
+                on_release:
+                    root.checker_task()
+            Label:
+                id: label_answer_task
